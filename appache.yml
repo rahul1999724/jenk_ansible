@@ -4,15 +4,17 @@
   - name: install package
     yum:
       name: "httpd"
-      state: "present"
-
-
-  - name:  copy file
-    copy:
-      src: "home.html"
-      dest: "/var/www/html"
+      state: present
 
   - name: start service
     service:
       name: "httpd"
       state: started
+      enabled: True
+      
+  - name:  copy file
+    copy:
+      src:  home.html
+      dest: /var/www/html
+
+  
