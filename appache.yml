@@ -1,0 +1,18 @@
+- hosts: webserver
+  become: True
+  tasks:
+  - name: install package
+    yum:
+      name: "httpd"
+      state: "present"
+
+
+  - name:  copy file
+    copy:
+      src: "home.html"
+      dest: "/var/www/html"
+
+  - name: start service
+    service:
+      name: "httpd"
+      state: started
